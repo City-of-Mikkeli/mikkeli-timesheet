@@ -1,0 +1,20 @@
+{
+  "name": "MklTimeSheet",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "jade": "*",
+    "mongoose" : "*",
+    "passport" : "*",
+    "passport-local" : "*",
+    "bcrypt-nodejs" : "*",
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "method-override": "*",
+    "express-session": "*"
+  }
+}

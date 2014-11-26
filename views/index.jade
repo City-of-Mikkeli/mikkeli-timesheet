@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1(class='page-header') #{user.local.email}
+  p(class='text-right') 
+    span(id='weekStateSpan')
+    | &nbspYhteensä:&nbsp;
+    span(id='totalWeekHours') 0h
+  div(id='mainCalendar')
+  br
+  button(id='lockWeekHoursBtn', class='btn btn-warning btn-lg pull-right') Lukitse viikko
+  script(src='/libs/fullcalendar/fullcalendar.js')
+  script(src='/libs/fullcalendar/lang/fi.js')
+  script(src='/script/calendar.js')

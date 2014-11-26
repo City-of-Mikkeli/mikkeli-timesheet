@@ -1,0 +1,176 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+  
+    title Tuntikirjaus
+    
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='/libs/fullcalendar/fullcalendar.css')
+    link(rel='stylesheet', href='//cdn.datatables.net/1.10.3/css/jquery.dataTables.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    
+    script(src='/libs/fullcalendar/lib/jquery.min.js')
+    script(src='/libs/fullcalendar/lib/moment.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
+    script(src='/script/common.js')
+  body
+    div(id='addPriceModal' class='modal fade')
+      div(class='modal-dialog')
+        div(class='modal-content')
+          form(role='form', action='/price', method='post')
+            div(class='modal-header')
+              button(type='button', class='close', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+                span(class='sr-only') Sulje
+              h4(class='modal-title') Lisää hinta
+            div(class='modal-body')
+              div(class='form-group')
+                label(for='addPriceNameInput') Nimi
+                input(name='name', type='text', class='form-control', id='addPriceNameInput')
+              div(class='form-group')
+                label(for='addPricePriceInput') Hinta / tunti
+                input(name='price', type='number', class='form-control', id='addPricePriceInput')
+            div(class='modal-footer')
+              button(type='button', class='btn btn-default', data-dismiss='modal') Peruuta
+              input(type='submit', class='btn btn-primary', value='Tallenna')
+    
+    div(id='addCustomerModal' class='modal fade')
+      div(class='modal-dialog')
+        div(class='modal-content')
+          form(role='form', action='/customer', method='post')
+            div(class='modal-header')
+              button(type='button', class='close', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+                span(class='sr-only') Sulje
+              h4(class='modal-title') Uusi tilaaja
+            div(class='modal-body')
+              div(class='form-group')
+                label(for='addCustomerNameInput') Nimi
+                input(name='name', type='text', class='form-control', id='addCustomerNameInput')
+            div(class='modal-footer')
+              button(type='button', class='btn btn-default', data-dismiss='modal') Peruuta
+              input(type='submit', class='btn btn-primary', value='Tallenna')
+              
+    div(id='addProjectModal' class='modal fade')
+      div(class='modal-dialog')
+        div(class='modal-content')
+          form(role='form', action='/project', method='post')
+            div(class='modal-header')
+              button(type='button', class='close', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+                span(class='sr-only') Sulje
+              h4(class='modal-title') Uusi projekti
+            div(class='modal-body')
+              div(class='form-group')
+                label(for='addProjectNameInput') Nimi
+                input(name='name', type='text', class='form-control', id='addProjectNameInput')
+              div(class='form-group')
+                label(for='addProjectDescriptionInput') Kuvaus
+                textarea(name='description', class='form-control', id='addProjectDescriptionInput')
+              div(class='form-group')
+                label(for='addProjectCustomersInput') Tilaajat
+                select(name='customers[]', class='form-control', id='addProjectCustomersInput', size='3', multiple)
+                p(class='help-block') Voit valita listasta useita tilaajia.
+            div(class='modal-footer')
+              button(type='button', class='btn btn-default', data-dismiss='modal') Peruuta
+              input(type='submit', class='btn btn-primary', value='Tallenna')
+              
+    div(id='addWorkModal' class='modal fade')
+      div(class='modal-dialog')
+        div(class='modal-content')
+          form(role='form', action='/work', method='post')
+            div(class='modal-header')
+              button(type='button', class='close', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+                span(class='sr-only') Sulje
+              h4(class='modal-title') Lisää tunteja
+            div(class='modal-body')
+              div(class='form-group')
+                label(for='addWorkHoursInput') Tunnit
+                input(name='hours', type='number', class='form-control', id='addWorkHoursInput')
+              div(class='form-group')
+                label(for='addWorkDescriptionInput') Kuvaus
+                textarea(name='description', class='form-control', id='addWorkDescriptionInput')
+              div(class='form-group')
+                label(for='addWorkPriceInput') Hinta
+                select(name='price', class='form-control', id='addWorkPriceInput')
+              div(class='form-group')
+                label(for='addWorkCostCenterInput') Kustannuspaikka
+                select(name='costcenter', class='form-control', id='addWorkCostCenterInput')
+              div(class='form-group')
+                label(for='addWorkProjectInput') Projekti
+                select(name='project', class='form-control', id='addWorkProjectInput')
+              div(class='form-group')
+                label(for='addWorkCustomerInput') Tilaaja
+                select(name='customer', class='form-control', id='addWorkCustomerInput')
+              input(type='hidden', id='addWorkDateInput', name='date')
+              input(type='hidden', id='addWorkIdInput', name='_id')
+            div(class='modal-footer')
+              button(type='button', class='btn btn-default', data-dismiss='modal') Peruuta
+              input(type='submit', class='btn btn-primary', value='Tallenna')              
+
+    div(id='addCostCenterModal' class='modal fade')
+      div(class='modal-dialog')
+        div(class='modal-content')
+          form(role='form', action='/costcenter', method='post')
+            div(class='modal-header')
+              button(type='button', class='close', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+                span(class='sr-only') Sulje
+              h4(class='modal-title') Uusi kustannuspaikka
+            div(class='modal-body')
+              div(class='form-group')
+                label(for='addCostCenterNameInput') Nimi
+                input(name='name', type='text', class='form-control', id='addCostCenterNameInput')
+              div(class='form-group')
+                label(for='addCostCenterNumberInput') Numero
+                input(name='number', type='number', class='form-control', id='addCostCenterNumberInput')
+            div(class='modal-footer')
+              button(type='button', class='btn btn-default', data-dismiss='modal') Peruuta
+              input(type='submit', class='btn btn-primary', value='Tallenna')  
+  
+    div(class='container-fluid')
+      div(class='row')
+        div(class='col-sm-3 col-md-2 sidebar')
+          ul(class='nav nav-sidebar')
+            li(class='dividerContainer')
+              span(class='navSectionHeader') Yleinen
+              hr(class='navDivider')
+            li
+              a(href='/') Syötä tunnit
+            li
+              a(href='/logout') Kirjaudu ulos
+            li(class='dividerContainer')
+              span(class='navSectionHeader') Projektit
+              hr(class='navDivider')
+            li
+              a(href='/projectlist') Listaa projektit
+            li
+              a(href='#', data-toggle='modal', data-target='#addProjectModal') Luo projekti
+            li(class='dividerContainer')
+              span(class='navSectionHeader') Käyttäjä
+              hr(class='navDivider')
+            li
+              a(href='#') Omat tiedot
+            li
+              a(href='/userlist') Listaa käyttäjät
+            li(class='dividerContainer')
+              span(class='navSectionHeader') Tilaajat
+              hr(class='navDivider')
+            li
+              a(href='/customerlist') Listaa tilaajat
+            li
+              a(href='#', data-toggle='modal', data-target='#addCustomerModal') Luo tilaaja
+            li(class='dividerContainer')
+              span(class='navSectionHeader') Kustannuspaikat
+              hr(class='navDivider')
+            li
+              a(href='/costcenterlist') Listaa kustannuspaikat
+            li
+              a(href='#', data-toggle='modal', data-target='#addCostCenterModal') Lisää kustannuspaikka
+        div(class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main')
+          block content
