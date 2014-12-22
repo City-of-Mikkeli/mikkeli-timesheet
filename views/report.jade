@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1(class='page-header') Reporting
+  p
+    b Generoi raportti:
+  ul(class='report-time-selection')
+    li
+      input(type='radio', name='reportTime')
+      | &nbsp;Nykyinen kuukausi
+    li
+      input(type='radio', name='reportTime')
+      | &nbsp;Edellinen kuukausi
+    li
+      input(type='radio', name='reportTime') 
+      | &nbsp;Aikaväli: 
+      input(type='text', name='reportTimePeriod', class='time-period-picker')
+  script(src='/script/report.js')

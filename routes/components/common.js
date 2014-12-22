@@ -19,6 +19,9 @@ exports.costcenterlist = function(req, res) {
 exports.customerlist = function(req, res) {
 	res.render('list', {title: 'Tilaajat', handler: 'customer_list.js'});
 };
+exports.report = function(req, res){
+	res.render('report');
+};
 
 exports.login = function(req, res){
 	res.render('login');

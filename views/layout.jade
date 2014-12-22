@@ -11,11 +11,13 @@ html
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css')
     link(rel='stylesheet', href='/libs/fullcalendar/fullcalendar.css')
     link(rel='stylesheet', href='//cdn.datatables.net/1.10.3/css/jquery.dataTables.min.css')
+    link(rel='stylesheet', href='/libs/bt-datetimepicker/css/bootstrap-datetimepicker.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     
     script(src='/libs/fullcalendar/lib/jquery.min.js')
     script(src='/libs/fullcalendar/lib/moment.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
+    script(src='/libs/bt-datetimepicker/js/bootstrap-datetimepicker.min.js')
     script(src='/script/common.js')
   body
     div(id='addPriceModal' class='modal fade')
@@ -142,6 +144,8 @@ html
               hr(class='navDivider')
             li
               a(href='/') Syötä tunnit
+            li
+              a(href='/report') Raportointi
             li
               a(href='/logout') Kirjaudu ulos
             li(class='dividerContainer')

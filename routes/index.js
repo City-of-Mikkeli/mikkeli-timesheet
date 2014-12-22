@@ -29,6 +29,7 @@ module.exports = function (app, passport){
 	app.get('/userlist', authenticate, common.userlist);
 	app.get('/costcenterlist', authenticate, common.costcenterlist);
 	app.get('/customerlist', authenticate, common.customerlist);
+	app.get('/report', authenticate, common.report);
 	
 	/** Work routes **/
 	
