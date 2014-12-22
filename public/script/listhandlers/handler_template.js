@@ -1,6 +1,10 @@
 (function(){
 	'use strict';
 	
+	/**
+	 * Copy this template and implement code in order to create new
+	 * list types.
+	 */
 	$(document).ready(function(){
 		$.getJSON( '/item', function( items ) {
 			var tableData = [];
