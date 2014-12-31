@@ -5,6 +5,7 @@ var price = require('./components/price');
 var project = require('./components/project');
 var work = require('./components/work');
 var customer = require('./components/customer');
+var report = require('./components/report');
 
 module.exports = function (app, passport){
 	
@@ -30,6 +31,11 @@ module.exports = function (app, passport){
 	app.get('/costcenterlist', authenticate, common.costcenterlist);
 	app.get('/customerlist', authenticate, common.customerlist);
 	app.get('/report', authenticate, common.report);
+	
+	/** Report routes **/
+	
+	app.post('/report/pdf', authenticate, report.pdf);
+	app.post('/report/xls', authenticate, report.xls);
 	
 	/** Work routes **/
 	
