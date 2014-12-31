@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node app.js"
   },
+  "license": "AGPLv3",
   "dependencies": {
     "express": "*",
     "jade": "*",
